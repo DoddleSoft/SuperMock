@@ -15,11 +15,11 @@ export default function FinalCTA() {
                 </div>
 
                 <h2 className="text-5xl font-bold tracking-tight text-supermock-text sm:text-7xl/none max-w-4xl mx-auto">
-                    Ready to Run Your Centre <br />
+                    Start running unlimited <br />
                     <span className="relative inline-block mt-2">
                         <span className="absolute inset-0 bg-gradient-to-r from-supermock-red to-orange-600 blur-2xl opacity-20 transform -skew-x-12"></span>
                         <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-supermock-red to-orange-600">
-                            Like a Pro?
+                            IELTS mock tests
                         </span>
                     </span>
                 </h2>

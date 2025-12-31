@@ -25,13 +25,12 @@ export default function Hero() {
                         </span>
                     </div>
 
-                    <h1 className="text-5xl font-medium tracking-tight text-supermock-text mb-8 sm:text-7xl animate-[fade-in_1s_ease-out_0.2s_forwards] translate-y-4">
-                        Run <span className="text-sand font-extrabold italic pr-1">unlimited</span> <br className="hidden lg:block" />
-                        <span className="text-sand-red italic">IELTS</span> mock tests
+                    <h1 className="text-5xl font-bold tracking-tighter text-supermock-text mb-8 sm:text-7xl lg:text-8xl animate-[fade-in_1s_ease-out_0.2s_forwards] translate-y-4 text-balance">
+                        Unlimited <span className="text-transparent bg-clip-text bg-gradient-to-r from-supermock-red to-red-600">IELTS</span> mock tests
                     </h1>
 
                     <p className="max-w-xl text-lg leading-relaxed text-supermock-text-secondary mb-10 sm:text-xl animate-[fade-in_1s_ease-out_0.4s_forwards] opacity-0 translate-y-4">
-                        The complete platform for IELTS centres. Manage exams, students, and results without limits or per-student fees.
+                        Create, manage, and analyse full-length IELTS exams across all four modules
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start animate-[fade-in_1s_ease-out_0.6s_forwards] opacity-0 translate-y-4">
