@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-supermock-red: #B11226;
-  --color-supermock-base: #0E0E11;
-  --color-supermock-glass: rgba(255, 255, 255, 0.08);
-  --color-supermock-text: #F5F5F5;
-  --color-supermock-text-secondary: #9CA3AF;
+  --color-supermock-red: #D92D20;
+  --color-supermock-base: #F9FAFB;
+  --color-supermock-glass: rgba(0, 0, 0, 0.03);
+  --color-supermock-text: #111827;
+  --color-supermock-text-secondary: #4B5563;
 
   --font-inter: var(--font-inter);
 
@@ -25,8 +25,12 @@
 }
 
 :root {
-  --background: #0E0E11;
-  --foreground: #F5F5F5;
+  --background: #F9FAFB;
+  --foreground: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -47,43 +51,93 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Premium Text Utilities */
+.text-gradient-glass {
+  background: linear-gradient(135deg, #111827 0%, #6B7280 50%, #111827 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+.text-gradient-red {
+  background: linear-gradient(135deg, #D92D20 0%, #B91C1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-sand {
+  background:
+    linear-gradient(135deg, rgba(198, 147, 75, 0.4), rgba(255, 255, 255, 0) 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #C6934B 0%, #FDE68A 50%, #D97706 100%);
+  background-blend-mode: overlay, soft-light, normal;
+  background-size: 100% 100%, 120px 120px, 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 1px 2px rgba(198, 147, 75, 0.3));
+}
+
+.text-sand-red {
+  background:
+    linear-gradient(135deg, rgba(185, 28, 28, 0.4), rgba(255, 255, 255, 0) 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #B91C1C 0%, #FCA5A5 50%, #DC2626 100%);
+  background-blend-mode: overlay, soft-light, normal;
+  background-size: 100% 100%, 120px 120px, 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 1px 2px rgba(220, 38, 38, 0.3));
 }
 
 /* Custom Glass Utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
 
 .glass-button {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  color: var(--foreground);
 }
 
 .glass-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  background: #F3F4F6;
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }

@@ -18,7 +18,6 @@ export default function Home() {
       <Solution />
       <WhatsIncluded />
       <Pricing />
-      <Cloud />
       <Guarantee />
       <FinalCTA />
       <Footer />

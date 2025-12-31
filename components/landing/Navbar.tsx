@@ -1,43 +1,53 @@
+"use client";
+
 import Link from "next/link";
 
 export default function Navbar() {
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-6 pointer-events-none">
             <div className="w-full max-w-7xl pointer-events-auto">
-                <div className="relative flex items-center justify-between px-6 py-4 rounded-2xl bg-[#0A0A0B]/70 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/50">
+                <div className="relative flex items-center justify-between px-6 py-4 rounded-2xl glass-panel">
 
                     {/* Brand */}
                     <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold tracking-tight text-white">
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="text-xl font-bold tracking-tight text-supermock-text hover:opacity-80 transition-opacity cursor-pointer"
+                        >
                             Super<span className="text-supermock-red">Mock</span>
-                        </span>
+                        </button>
                     </div>
 
                     {/* Desktop Links */}
                     <div className="hidden sm:flex items-center gap-8">
-                        <Link
+                        <a
                             href="#features"
-                            className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                            onClick={(e) => handleScroll(e, "features")}
+                            className="text-sm font-medium text-supermock-text-secondary hover:text-supermock-text transition-colors cursor-pointer"
                         >
                             Features
-                        </Link>
-                        <Link
+                        </a>
+                        <a
                             href="#pricing"
-                            className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                            onClick={(e) => handleScroll(e, "pricing")}
+                            className="text-sm font-medium text-supermock-text-secondary hover:text-supermock-text transition-colors cursor-pointer"
                         >
                             Pricing
-                        </Link>
+                        </a>
 
                     </div>
 
                     {/* CTA */}
                     <div className="flex items-center gap-4">
-                        <Link
-                            href="#"
-                            className="hidden sm:block text-sm font-medium text-white/70 hover:text-white transition-colors"
-                        >
-                            Sign In
-                        </Link>
+
                         <button className="px-5 py-2.5 text-sm font-bold text-white transition-all bg-supermock-red rounded-xl hover:bg-[#c4152b] shadow-lg shadow-supermock-red/20 hover:shadow-supermock-red/40 hover:-translate-y-0.5">
                             Get SuperMock
                         </button>
