@@ -1,6 +1,5 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
-import TrustStrip from "@/components/landing/TrustStrip";
 import Problem from "@/components/landing/Problem";
 import Solution from "@/components/landing/Solution";
 import StandoutFeature from "@/components/landing/StandoutFeature";
@@ -16,7 +15,6 @@ export default function Home() {
     <main className="min-h-screen selection:bg-supermock-red selection:text-white">
       <Navbar />
       <Hero />
-      <TrustStrip />
       <Problem />
       <Solution />
       <StandoutFeature />
