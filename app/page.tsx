@@ -2,7 +2,6 @@ import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import Problem from "@/components/landing/Problem";
 import Solution from "@/components/landing/Solution";
-import StandoutFeature from "@/components/landing/StandoutFeature";
 import WhatsIncluded from "@/components/landing/WhatsIncluded";
 import Pricing from "@/components/landing/Pricing";
 import Cloud from "@/components/landing/Cloud";
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <Problem />
       <Solution />
-      <StandoutFeature />
       <WhatsIncluded />
       <Pricing />
       <Cloud />
