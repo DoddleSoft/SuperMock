@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} antialiased bg-supermock-base text-supermock-text`}
+        className={`${inter.variable} antialiased max-w-7xl mx-auto bg-supermock-base text-supermock-text`}
       >
         {children}
       </body>

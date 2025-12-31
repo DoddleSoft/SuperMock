@@ -1,59 +1,135 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
-        e.preventDefault();
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-6 pointer-events-none">
-            <div className="w-full max-w-7xl pointer-events-auto">
-                <div className="relative flex items-center justify-between px-6 py-4 rounded-2xl glass-panel">
+  // Standard practice: Add background blur only after scrolling
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-                    {/* Brand */}
-                    <div className="flex items-center gap-2">
-                        <button
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="text-xl font-bold tracking-tight text-supermock-text hover:opacity-80 transition-opacity cursor-pointer"
-                        >
-                            Super<span className="text-supermock-red">Mock</span>
-                        </button>
-                    </div>
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault(); // Prevent instant jump
+    const element = document.getElementById(id);
+    if (element) {
+      // Offset for the fixed header height (approx 80px)
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-                    {/* Desktop Links */}
-                    <div className="hidden sm:flex items-center gap-8">
-                        <a
-                            href="#features"
-                            onClick={(e) => handleScroll(e, "features")}
-                            className="text-sm font-medium text-supermock-text-secondary hover:text-supermock-text transition-colors cursor-pointer"
-                        >
-                            Features
-                        </a>
-                        <a
-                            href="#pricing"
-                            onClick={(e) => handleScroll(e, "pricing")}
-                            className="text-sm font-medium text-supermock-text-secondary hover:text-supermock-text transition-colors cursor-pointer"
-                        >
-                            Pricing
-                        </a>
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
-                    </div>
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 pointer-events-none ${
+        scrolled ? "py-2 md:py-4" : "py-4 md:py-6"
+      }`}
+    >
+      {/* Container Width: 
+         - Mobile: w-[95%] (Floating look, doesn't touch edges)
+         - Tablet/Desktop: max-w-5xl / max-w-7xl
+      */}
+      <div className="w-[95%] md:w-full md:max-w-5xl lg:max-w-7xl rounded-2xl pointer-events-auto">
+        <div
+          className={`relative flex items-center justify-between rounded-2xl border transition-all duration-300 
+            ${
+              /* Padding Scaling: Mobile px-4 -> Tablet px-6 -> Desktop px-8 */
+              "px-4 py-3 md:px-6 md:py-4 lg:px-8"
+            }
+            ${
+              scrolled
+                ? "bg-white/70 backdrop-blur-xl border-white/20 shadow-md"
+                : "bg-white/50 border-transparent shadow-sm"
+            }`}
+        >
+          {/* --- Brand --- */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 hover:opacity-80 transition-opacity"
+            >
+              Super<span className="text-red-600">Mock</span>
+            </button>
+          </div>
 
-                    {/* CTA */}
-                    <div className="flex items-center gap-4">
-                        <Link href="/register" className="px-5 py-2.5 text-sm font-bold text-white transition-all bg-supermock-red rounded-xl hover:bg-[#c4152b] shadow-lg shadow-supermock-red/20 hover:shadow-supermock-red/40 hover:-translate-y-0.5">
-                            Get SuperMock
-                        </Link>
-                    </div>
+          {/* --- Desktop Links --- */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {["Features", "Pricing"].map((item) => (
+              <Link
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={(e) => handleSmoothScroll(e, item.toLowerCase())}
+                className="text-sm font-medium text-slate-600 hover:text-red-600 transition-colors"
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
 
-                </div>
-            </div>
-        </nav>
-    );
+          {/* --- CTA & Mobile Toggle --- */}
+          <div className="flex items-center gap-3 md:gap-4">
+            <Link
+              href="/join-waitlist"
+              className="hidden sm:block px-4 py-2 md:px-5 text-xs md:text-sm font-semibold text-white transition-all bg-gradient-to-r from-red-600 to-red-900 rounded-full hover:from-red-700 hover:to-red-800 hover:shadow-sm hover:shadow-red-500/30 active:scale-95"
+            >
+              Get SuperMock
+            </Link>
+
+            {/* Mobile Toggle Button */}
+            <button
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none hover:bg-slate-100 rounded-full transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+
+        {/* --- Mobile Menu --- */}
+        {isMobileMenuOpen && (
+          <div className="mt-2 p-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/20 shadow-xl md:hidden flex flex-col gap-2 animate-in slide-in-from-top-2 fade-in duration-200">
+            <Link
+              href="/#features"
+              onClick={(e) => handleSmoothScroll(e, "features")}
+              className="text-slate-600 font-medium px-4 py-3 hover:bg-slate-50 rounded-xl transition-colors"
+            >
+              Features
+            </Link>
+            <Link
+              href="/#pricing"
+              onClick={(e) => handleSmoothScroll(e, "pricing")}
+              className="text-slate-600 font-medium px-4 py-3 hover:bg-slate-50 rounded-xl transition-colors"
+            >
+              Pricing
+            </Link>
+            <div className="h-px bg-slate-100 my-1 mx-2" /> {/* Divider */}
+            <Link
+              href="/join-waitlist"
+              onClick={() => setIsMobileMenuOpen(false)} // Added close logic here
+              className="w-full text-center px-5 py-3 text-sm font-bold text-white bg-red-600 rounded-xl active:scale-95 transition-transform hover:bg-red-700"
+            >
+              Get SuperMock
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
 }
