@@ -1,4 +1,5 @@
 import { Check, Info } from "lucide-react";
+import Link from "next/link";
 import Cloud from "./Cloud";
 
 export default function Pricing() {
@@ -66,7 +67,7 @@ export default function Pricing() {
                             ))}
                         </div>
 
-                        <button className="relative w-full py-5 text-lg font-bold text-white transition-all transform rounded-xl shadow-lg hover:scale-[1.02] overflow-hidden group/btn">
+                        <Link href="/register" className="relative w-full py-5 text-lg font-bold text-white transition-all transform rounded-xl shadow-lg hover:scale-[1.02] overflow-hidden group/btn flex items-center justify-center">
                             <div className="absolute inset-0 bg-gradient-to-br from-supermock-red to-[#B91C1C] group-hover/btn:from-[#E31B23] group-hover/btn:to-supermock-red transition-all duration-300"></div>
                             <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] transition-opacity duration-300"></div>
                             <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50"></div>
@@ -74,7 +75,7 @@ export default function Pricing() {
                                 Get Started Now
                                 <svg className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                        </button>
+                        </Link>
 
                         <p className="mt-6 text-sm text-center text-supermock-text-secondary">
                             No hidden fees. 30-day money-back guarantee.

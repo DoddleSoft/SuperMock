@@ -47,10 +47,9 @@ export default function Navbar() {
 
                     {/* CTA */}
                     <div className="flex items-center gap-4">
-
-                        <button className="px-5 py-2.5 text-sm font-bold text-white transition-all bg-supermock-red rounded-xl hover:bg-[#c4152b] shadow-lg shadow-supermock-red/20 hover:shadow-supermock-red/40 hover:-translate-y-0.5">
+                        <Link href="/register" className="px-5 py-2.5 text-sm font-bold text-white transition-all bg-supermock-red rounded-xl hover:bg-[#c4152b] shadow-lg shadow-supermock-red/20 hover:shadow-supermock-red/40 hover:-translate-y-0.5">
                             Get SuperMock
-                        </button>
+                        </Link>
                     </div>
 
                 </div>

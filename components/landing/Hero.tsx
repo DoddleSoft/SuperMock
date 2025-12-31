@@ -1,4 +1,5 @@
 import { Play, Check } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
     return (
@@ -34,7 +35,7 @@ export default function Hero() {
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start animate-[fade-in_1s_ease-out_0.6s_forwards] opacity-0 translate-y-4">
-                        <button className="relative group px-8 py-4 text-base font-bold text-white transition-all transform rounded-xl shadow-lg hover:scale-[1.02] overflow-hidden">
+                        <Link href="/register" className="relative group px-8 py-4 text-base font-bold text-white transition-all transform rounded-xl shadow-lg hover:scale-[1.02] overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-br from-supermock-red to-[#B91C1C] group-hover:from-[#E31B23] group-hover:to-supermock-red transition-all duration-300"></div>
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] transition-opacity duration-300"></div>
                             <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50"></div>
@@ -42,7 +43,7 @@ export default function Hero() {
                                 Get SuperMock for Your Centre
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 transition-transform group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                             </span>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Trust Items / Key Benefits */}
