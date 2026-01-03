@@ -41,17 +41,10 @@ export default function Navbar() {
         scrolled ? "py-2 md:py-4" : "py-4 md:py-6"
       }`}
     >
-      {/* Container Width: 
-         - Mobile: w-[95%] (Floating look, doesn't touch edges)
-         - Tablet/Desktop: max-w-5xl / max-w-7xl
-      */}
       <div className="w-[95%] md:w-full md:max-w-5xl lg:max-w-7xl rounded-2xl pointer-events-auto">
         <div
           className={`relative flex items-center justify-between rounded-2xl border transition-all duration-300 
-            ${
-              /* Padding Scaling: Mobile px-4 -> Tablet px-6 -> Desktop px-8 */
-              "px-4 py-3 md:px-6 md:py-4 lg:px-8"
-            }
+            ${"px-4 py-3 md:px-6 md:py-4 lg:px-8"}
             ${
               scrolled
                 ? "bg-white/70 backdrop-blur-xl border-white/20 shadow-md"

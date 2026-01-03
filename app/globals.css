@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-supermock-red: #D92D20;
-  --color-supermock-base: #F9FAFB;
+  --color-supermock-red: #d92d20;
+  --color-supermock-base: #f9fafb;
   --color-supermock-glass: rgba(0, 0, 0, 0.03);
   --color-supermock-text: #111827;
-  --color-supermock-text-secondary: #4B5563;
+  --color-supermock-text-secondary: #4b5563;
 
   --font-inter: var(--font-inter);
 
@@ -25,12 +25,29 @@
 }
 
 :root {
-  --background: #F9FAFB;
+  --background: #f9fafb;
   --foreground: #111827;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Smooth scrolling with acceleration */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
+    -moz-scroll-behavior: smooth;
+  }
+}
+
+/* Optimize for performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  will-change: auto;
 }
 
 body {
@@ -39,6 +56,8 @@ body {
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
 }
 
 /* Noise overlay */
@@ -58,7 +77,7 @@ body::before {
 
 /* Premium Text Utilities */
 .text-gradient-glass {
-  background: linear-gradient(135deg, #111827 0%, #6B7280 50%, #111827 100%);
+  background: linear-gradient(135deg, #111827 0%, #6b7280 50%, #111827 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -67,17 +86,20 @@ body::before {
 }
 
 .text-gradient-red {
-  background: linear-gradient(135deg, #D92D20 0%, #B91C1C 100%);
+  background: linear-gradient(135deg, #d92d20 0%, #b91c1c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-sand {
-  background:
-    linear-gradient(135deg, rgba(198, 147, 75, 0.4), rgba(255, 255, 255, 0) 50%),
+  background: linear-gradient(
+      135deg,
+      rgba(198, 147, 75, 0.4),
+      rgba(255, 255, 255, 0) 50%
+    ),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"),
-    linear-gradient(135deg, #C6934B 0%, #FDE68A 50%, #D97706 100%);
+    linear-gradient(135deg, #c6934b 0%, #fde68a 50%, #d97706 100%);
   background-blend-mode: overlay, soft-light, normal;
   background-size: 100% 100%, 120px 120px, 100% 100%;
   -webkit-background-clip: text;
@@ -89,10 +111,13 @@ body::before {
 }
 
 .text-sand-red {
-  background:
-    linear-gradient(135deg, rgba(185, 28, 28, 0.4), rgba(255, 255, 255, 0) 50%),
+  background: linear-gradient(
+      135deg,
+      rgba(185, 28, 28, 0.4),
+      rgba(255, 255, 255, 0) 50%
+    ),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"),
-    linear-gradient(135deg, #B91C1C 0%, #FCA5A5 50%, #DC2626 100%);
+    linear-gradient(135deg, #b91c1c 0%, #fca5a5 50%, #dc2626 100%);
   background-blend-mode: overlay, soft-light, normal;
   background-size: 100% 100%, 120px 120px, 100% 100%;
   -webkit-background-clip: text;
@@ -109,7 +134,8 @@ body::before {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .glass-card {
@@ -125,7 +151,8 @@ body::before {
   background: rgba(255, 255, 255, 0.95);
   border-color: rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
 
 .glass-button {
@@ -137,7 +164,127 @@ body::before {
 }
 
 .glass-button:hover {
-  background: #F3F4F6;
+  background: #f3f4f6;
   border-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Scroll animations and enhanced smooth scrolling */
+@keyframes scroll-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom easing functions for ultra-smooth scrolling */
+@keyframes ease-out-quart {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ease-in-out-cubic {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Fade in on scroll effect for sections */
+section {
+  animation: fade-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Enhanced smooth scroll behavior */
+html {
+  scroll-timeline: view();
+}
+
+/* Scroll snap container for smooth sections */
+main {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+  -moz-scroll-behavior: smooth;
+}
+
+/* Smooth scroll utility classes */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+}
+
+/* Parallax effect on scroll */
+.parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fade in elements on scroll - ultra smooth */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Smooth transition for interactive elements */
+button,
+a,
+[role="button"] {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: auto;
+}
+
+button:active,
+a:active,
+[role="button"]:active {
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Enable hardware acceleration for smooth animations */
+div,
+section,
+main,
+nav,
+header,
+footer {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

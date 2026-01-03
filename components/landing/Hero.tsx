@@ -27,7 +27,7 @@ export default function Hero() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 md:px-4 mb-6 md:mb-8 mt-8 lg:mt-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-red-200 transition-all cursor-default group">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 md:px-4 mb-6 md:mb-8 mt-12 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-red-200 transition-all cursor-default group">
               <span className="text-[10px] md:text-xs font-bold tracking-wide text-slate-600 uppercase group-hover:text-slate-900 transition-colors">
                 Mock Test Platform for IELTS Centres
               </span>

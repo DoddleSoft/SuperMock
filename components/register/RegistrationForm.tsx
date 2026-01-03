@@ -60,8 +60,8 @@ export default function RegistrationForm() {
     const formData = new FormData(e.currentTarget);
     const data: WaitlistData = {
       name: formData.get("name") as string,
-      phone: (formData.get("phone") as string) || undefined,
-      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      email: (formData.get("email") as string) || undefined,
       centreName: (formData.get("centre") as string) || undefined,
       location: (formData.get("location") as string) || undefined,
     };
@@ -71,10 +71,12 @@ export default function RegistrationForm() {
       if (response.success) {
         setSubmitted(true);
       } else {
-        setError(response.message);
+        // Show user-friendly error message
+        setError(response.message || "An error occurred. Please try again.");
       }
     } catch (err) {
       setError("Something went wrong. Please try again.");
+      console.error("Form submission error:", err);
     } finally {
       setLoading(false);
     }
@@ -116,7 +118,7 @@ export default function RegistrationForm() {
             Join Super<span className="text-red-600">Mock</span>
           </h2>
           <p className="text-slate-500">
-            Secure your centre's spot for the February 1, 2026 launch.
+            Secure your centre's spot today for exclusive deals!
           </p>
         </div>
 
@@ -153,16 +155,13 @@ export default function RegistrationForm() {
               </div>
             </div>
 
-            {/* Phone Number (Optional) */}
+            {/* Phone Number (Required) */}
             <div className="space-y-1.5">
               <label
                 htmlFor="phone"
                 className="text-sm font-semibold text-slate-700 pl-1"
               >
-                Phone Number{" "}
-                <span className="text-slate-400 font-normal text-xs ml-1">
-                  (Optional)
-                </span>
+                Phone Number <span className="text-red-500">*</span>
               </label>
               <div className="relative group">
                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-red-500 transition-colors" />
@@ -170,6 +169,7 @@ export default function RegistrationForm() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  required
                   disabled={loading}
                   placeholder="+880 1XXXXXX..."
                   className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all placeholder:text-slate-300 text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -178,13 +178,14 @@ export default function RegistrationForm() {
             </div>
           </div>
 
-          {/* Email (Required) */}
+          {/* Email (Optional) */}
           <div className="space-y-1.5">
             <label
               htmlFor="email"
               className="text-sm font-semibold text-slate-700 pl-1"
             >
-              Email Address <span className="text-red-500">*</span>
+              Email Address{" "}
+              <span className="text-slate-400 font-normal text-xs ml-1">*</span>
             </label>
             <div className="relative group">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-red-500 transition-colors" />
@@ -192,7 +193,6 @@ export default function RegistrationForm() {
                 type="email"
                 id="email"
                 name="email"
-                required
                 maxLength={100}
                 disabled={loading}
                 placeholder="centre@example.com"
@@ -267,7 +267,7 @@ export default function RegistrationForm() {
 
                 {/* The Floating Menu */}
                 {isDropdownOpen && (
-                  <div className="absolute top-[calc(100%+8px)] left-0 w-full bg-white border border-slate-100 rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                  <div className="absolute bottom-[calc(100%+8px)] left-0 w-full bg-white border border-slate-100 rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                     <div className="max-h-60 overflow-y-auto py-2 custom-scrollbar">
                       {LOCATIONS.map((loc) => (
                         <div
@@ -316,10 +316,6 @@ export default function RegistrationForm() {
               )}
             </span>
           </button>
-
-          <p className="text-xs text-center text-slate-400 pt-2">
-            No credit card required. Launching Feb 2026.
-          </p>
         </form>
       </div>
     </div>

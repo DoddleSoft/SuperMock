@@ -2,8 +2,8 @@ import { createClient } from "@/libs/supabase/client";
 
 export interface WaitlistData {
   name: string;
-  phone?: string;
-  email: string;
+  phone: string;
+  email?: string;
   centreName?: string;
   location?: string;
 }
@@ -72,27 +72,27 @@ const validateWaitlistData = (
     return { valid: false, error: "Name is too long (max 100 characters)" };
   }
 
-  // Validate required email
-  if (!data.email || data.email.trim().length === 0) {
-    return { valid: false, error: "Email is required" };
+  // Validate required phone
+  if (!data.phone || data.phone.trim().length === 0) {
+    return { valid: false, error: "Phone number is required" };
   }
 
-  if (!isValidEmail(data.email)) {
-    return { valid: false, error: "Invalid email format" };
+  if (!isValidPhone(data.phone)) {
+    return {
+      valid: false,
+      error:
+        "Invalid phone number. Enter either 01775491560 or +8801775491560 format.",
+    };
   }
 
-  if (data.email.length > 100) {
-    return { valid: false, error: "Email is too long (max 100 characters)" };
-  }
+  // Validate optional email
+  if (data.email && data.email.trim().length > 0) {
+    if (!isValidEmail(data.email)) {
+      return { valid: false, error: "Invalid email format" };
+    }
 
-  // Validate optional phone
-  if (data.phone && data.phone.trim().length > 0) {
-    if (!isValidPhone(data.phone)) {
-      return {
-        valid: false,
-        error:
-          "Invalid phone number. Enter either 01775491560 or +8801775491560 format.",
-      };
+    if (data.email.length > 100) {
+      return { valid: false, error: "Email is too long (max 100 characters)" };
     }
   }
 
@@ -124,10 +124,8 @@ export const addToWaitlist = async (
     // Sanitize all string inputs
     const sanitizedData = {
       name: sanitizeString(data.name),
-      phone: data.phone
-        ? formatPhoneNumber(data.phone) // Auto-format phone number
-        : null,
-      email: sanitizeString(data.email.toLowerCase()),
+      phone: formatPhoneNumber(data.phone), // Phone is now required
+      email: data.email ? sanitizeString(data.email.toLowerCase()) : null,
       centre_name: data.centreName ? sanitizeString(data.centreName) : null,
       location: data.location || null,
     };
@@ -135,38 +133,38 @@ export const addToWaitlist = async (
     // Create Supabase client
     const supabase = createClient();
 
-    // Check if email already exists
-    const { data: emailExists } = await supabase
-      .from("waitlist")
-      .select("id")
-      .eq("email", sanitizedData.email)
-      .limit(1);
-
-    if (emailExists && emailExists.length > 0) {
-      return {
-        success: false,
-        message:
-          "This email is already registered. Please use a different email.",
-        error: "Email already exists",
-      };
-    }
-
-    // Check if phone number already exists (only if phone is provided)
-    if (sanitizedData.phone) {
-      const { data: phoneExists } = await supabase
+    // Check if email already exists (only if email is provided)
+    if (sanitizedData.email) {
+      const { data: emailExists } = await supabase
         .from("waitlist")
         .select("id")
-        .eq("phone", sanitizedData.phone)
+        .eq("email", sanitizedData.email)
         .limit(1);
 
-      if (phoneExists && phoneExists.length > 0) {
+      if (emailExists && emailExists.length > 0) {
         return {
           success: false,
           message:
-            "This phone number is already registered. Please use a different phone number.",
-          error: "Phone already exists",
+            "This email is already registered. Please use a different email.",
+          error: "Email already exists",
         };
       }
+    }
+
+    // Check if phone number already exists
+    const { data: phoneExists } = await supabase
+      .from("waitlist")
+      .select("id")
+      .eq("phone", sanitizedData.phone)
+      .limit(1);
+
+    if (phoneExists && phoneExists.length > 0) {
+      return {
+        success: false,
+        message:
+          "This phone number is already registered. Please use a different phone number.",
+        error: "Phone already exists",
+      };
     }
 
     // Insert into database
@@ -184,11 +182,42 @@ export const addToWaitlist = async (
         };
       }
 
+      // Handle unique constraint violations
+      if (
+        error.code === "23505" ||
+        error.message?.includes("unique constraint")
+      ) {
+        // Check which column caused the violation
+        if (error.message?.includes("email")) {
+          return {
+            success: false,
+            message:
+              "This email is already registered. Please use a different email.",
+            error: "Email already exists",
+          };
+        }
+        if (error.message?.includes("phone")) {
+          return {
+            success: false,
+            message:
+              "This phone number is already registered. Please use a different phone number.",
+            error: "Phone already exists",
+          };
+        }
+        // Generic duplicate error
+        return {
+          success: false,
+          message:
+            "This information is already registered. Please use different details.",
+          error: "Duplicate entry",
+        };
+      }
+
       console.error("Supabase error:", error);
       return {
         success: false,
-        message: "Failed to register. Please try again.",
-        error: error.message,
+        message: "An error occurred while registering. Please try again.",
+        error: "Registration failed",
       };
     }
 

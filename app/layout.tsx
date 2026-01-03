@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${inter.variable} antialiased max-w-7xl mx-auto bg-supermock-base text-supermock-text`}
       >
         {children}

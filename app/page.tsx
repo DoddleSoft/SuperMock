@@ -1,7 +1,6 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
-import Problem from "@/components/landing/Problem";
-import Solution from "@/components/landing/Solution";
+import WhyChoose from "@/components/landing/WhyChoose";
 import WhatsIncluded from "@/components/landing/WhatsIncluded";
 import Pricing from "@/components/landing/Pricing";
 import Guarantee from "@/components/landing/Guarantee";
@@ -13,8 +12,7 @@ export default function Home() {
     <main className="min-h-screen max-w-full">
       <Navbar />
       <Hero />
-      <Problem />
-      <Solution />
+      <WhyChoose />
       <WhatsIncluded />
       <Pricing />
       <Guarantee />

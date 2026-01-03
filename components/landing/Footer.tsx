@@ -30,28 +30,12 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4 text-supermock-text-secondary/60">
               <Link
-                href="#"
+                href="https://www.facebook.com/supermock.net"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-supermock-red transition-colors"
               >
                 <Facebook className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="hover:text-supermock-red transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="hover:text-supermock-red transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="hover:text-supermock-red transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -114,11 +98,11 @@ export default function Footer() {
             <ul className="space-y-3 md:space-y-4 text-supermock-text-secondary text-sm md:text-base">
               <li className="flex items-center gap-3 justify-center sm:justify-start">
                 <Mail className="w-5 h-5 text-supermock-red flex-shrink-0" />
-                <span>hello@supermock.com</span>
+                <span>contact@supermock.net</span>
               </li>
               <li className="flex items-center gap-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-supermock-red flex-shrink-0" />
-                <span>+880 1711 000 000</span>
+                <span>+880 1635 931 004</span>
               </li>
             </ul>
           </div>
