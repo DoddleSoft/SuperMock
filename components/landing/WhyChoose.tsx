@@ -27,7 +27,7 @@ export default function WhyChoose() {
     {
       name: "Maintenance & Updates",
       competitors: { available: false, text: "Extra developer costs" },
-      supermock: { available: true, text: "Included free" },
+      supermock: { available: true, text: "Included free in the package" },
     },
     {
       name: "AI-Powered Grading",
@@ -68,16 +68,17 @@ export default function WhyChoose() {
           <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-2xl bg-white">
             {/* Table Header */}
             <div className="grid grid-cols-3 gap-0 border-b items-center border-slate-200">
-              {/* Features Column Header */}
-              <div className="col-span-1 bg-slate-50 px-6 py-5 flex items-center">
-                <h3 className="text-md font-bold text-slate-700 uppercase tracking-wider">
-                  Features
-                </h3>
+              <div className="col-span-1 bg-slate-50 px-6 py-5">
+                <div className="flex flex-col h-full">
+                  <h3 className="text-lg md:text-xl font-bold text-slate-800">
+                    Competitors
+                  </h3>
+                </div>
               </div>
 
               {/* Competitors Header */}
-              <div className="col-span-1 bg-gradient-to-br from-slate-100 to-slate-200 px-6 py-5 text-center border-l border-slate-300">
-                <div className="flex flex-col items-center justify-center h-full">
+              <div className="col-span-1 bg-gradient-to-br from-slate-100 to-slate-200 px-6 py-5">
+                <div className="flex flex-col h-full">
                   <h3 className="text-lg md:text-xl font-bold text-slate-800">
                     Competitors
                   </h3>
@@ -85,8 +86,8 @@ export default function WhyChoose() {
               </div>
 
               {/* SuperMock Header */}
-              <div className="col-span-1 bg-gradient-to-br from-red-500 to-red-700 px-6 py-5 text-center border-l border-red-600">
-                <div className="flex flex-col items-center justify-center h-full">
+              <div className="col-span-1 bg-gradient-to-br from-red-500 to-red-700 px-6 py-5">
+                <div className="flex flex-col h-full">
                   <h3 className="text-lg md:text-xl font-bold text-white">
                     SuperMock
                   </h3>
@@ -109,8 +110,8 @@ export default function WhyChoose() {
                   </div>
 
                   {/* Competitors Value */}
-                  <div className="col-span-1 px-6 py-5 flex items-center justify-center border-l border-slate-100 bg-slate-50/30">
-                    <div className="flex flex-row items-center gap-4 text-center">
+                  <div className="col-span-1 px-6 py-5 flex items-center border-l border-slate-100 bg-slate-50/30">
+                    <div className="flex flex-row items-center gap-4">
                       {feature.competitors.available ? (
                         <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center">
                           <Check className="w-4 h-4 text-slate-600" />
@@ -127,8 +128,8 @@ export default function WhyChoose() {
                   </div>
 
                   {/* SuperMock Value */}
-                  <div className="col-span-1 px-6 py-5 flex items-center justify-center border-l border-red-100 bg-gradient-to-br from-red-50/50 to-orange-50/30">
-                    <div className="flex flex-row items-center gap-4 text-center">
+                  <div className="col-span-1 px-6 py-5 flex items-center border-l border-b border-red-100 bg-gradient-to-br from-red-100/30 to-orange-50/90">
+                    <div className="flex flex-row items-center gap-4">
                       {feature.supermock.available ? (
                         <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center shadow-sm">
                           <Check
