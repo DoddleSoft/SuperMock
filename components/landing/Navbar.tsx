@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -52,7 +53,13 @@ export default function Navbar() {
             }`}
         >
           {/* --- Brand --- */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/supermock-logo.png"
+              alt="SuperMock Logo"
+              width={40}
+              height={40}
+            />
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 hover:opacity-80 transition-opacity"

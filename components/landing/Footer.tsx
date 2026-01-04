@@ -7,24 +7,29 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="border-t border-black/5 bg-gray-50 pt-12 pb-8 md:pt-16 md:pb-12">
       <div className="px-4 md:px-8 mx-auto max-w-7xl">
-        {/* Grid Layout:
-            - Mobile: 1 column, gap-8
-            - Tablet (sm): 2 columns
-            - Desktop (lg): 4 columns, gap-12
-         */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Brand Column */}
           <div className="space-y-4 md:space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
-            <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold tracking-tight text-supermock-text">
-                Super<span className="text-supermock-red">Mock</span>
-              </span>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/supermock-logo.png"
+                alt="SuperMock Logo"
+                width={40}
+                height={40}
+              />
+              <Link href="/" className="inline-block">
+                <span className="text-2xl font-bold tracking-tight text-supermock-text">
+                  Super<span className="text-supermock-red">Mock</span>
+                </span>
+              </Link>
+            </div>
+
             <p className="text-sm md:text-base text-supermock-text-secondary leading-relaxed max-w-xs">
               The professional mock test platform for IELTS centres.
             </p>
