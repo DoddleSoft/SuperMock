@@ -12,7 +12,7 @@ export default function Guarantee() {
           <div className="relative z-10 flex flex-col items-center">
             {/* Icon Container */}
             <div className="inline-flex items-center justify-center p-4 md:p-5 mb-6 md:mb-8 rounded-full bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 shadow-lg shadow-amber-500/10 group">
-              <Award className="w-10 h-10 md:w-12 md:h-12 text-amber-600 group-hover:scale-110 transition-transform duration-300" />
+              <Award className="w-12 h-12 text-amber-600 group-hover:scale-110 transition-transform duration-300" />
             </div>
 
             {/* Headline */}

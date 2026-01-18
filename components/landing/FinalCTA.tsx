@@ -14,7 +14,7 @@ export default function FinalCTA() {
 
             {/* Gradient Text */}
             <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-supermock-red to-orange-600 pb-1">
-              IELTS mock tests
+              IELTS mock test
             </span>
           </span>
         </h2>

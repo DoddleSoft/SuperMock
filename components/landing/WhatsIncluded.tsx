@@ -7,6 +7,10 @@ import {
   Zap,
   Shield,
   Headphones,
+  GitGraph,
+  ChartNoAxesColumnIncreasing,
+  ChartColumnIncreasing,
+  ChartNoAxesCombined,
 } from "lucide-react";
 
 export default function WhatsIncluded() {
@@ -25,8 +29,7 @@ export default function WhatsIncluded() {
             </span>
           </h2>
           <p className="max-w-2xl lg:max-w-4xl mx-auto text-base md:text-lg text-supermock-text-secondary">
-            No hidden fees or "pro" tiers. You get the full power of SuperMock
-            from day one.
+            No hidden fees. You get the full power of SuperMock from day one.
           </p>
         </div>
 
@@ -34,9 +37,9 @@ export default function WhatsIncluded() {
           {/* Feature Cards */}
           {[
             {
-              title: "Role-Based Access",
-              icon: Users,
-              desc: "Modular permissions for your entire team and distinct roles.",
+              title: "Continuous updates",
+              icon: GitGraph,
+              desc: "New features and improvements added regularly at no extra cost.",
               color: "blue",
             },
             {
@@ -66,7 +69,7 @@ export default function WhatsIncluded() {
             },
             {
               title: "Uncapped Growth",
-              icon: Check,
+              icon: ChartNoAxesCombined,
               desc: "We never charge extra for adding more students, or tests.",
               color: "teal",
             },

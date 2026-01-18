@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="px-4 md:px-8 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Brand Column */}
-          <div className="space-y-4 md:space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
+          <div className="space-y-2 flex flex-col items-center sm:items-start text-center sm:text-left">
             <div className="flex items-center gap-2">
               <Image
                 src="/supermock-logo.png"
@@ -30,9 +30,10 @@ export default function Footer() {
               </Link>
             </div>
 
-            <p className="text-sm md:text-base text-supermock-text-secondary leading-relaxed max-w-xs">
-              The professional mock test platform for IELTS centres.
+            <p className="text-sm md:text-base mb-4 text-supermock-text-secondary leading-relaxed max-w-md">
+              Mock test platform for IELTS training centres.
             </p>
+
             <div className="flex items-center gap-4 text-supermock-text-secondary/60">
               <Link
                 href="https://www.facebook.com/supermock.net"
@@ -44,6 +45,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
+
           {/* Product */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <h3 className="font-semibold text-supermock-text mb-4 md:mb-6">
