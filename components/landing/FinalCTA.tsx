@@ -19,12 +19,6 @@ export default function FinalCTA() {
           </span>
         </h2>
 
-        {/* Subtext */}
-        <p className="text-base md:text-lg text-supermock-text-secondary max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
-          Join the top IELTS centres performing mock tests with zero
-          limitations. Start your growth journey now.
-        </p>
-
         {/* Buttons Container */}
         <div className="pt-2 md:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-md sm:max-w-none mx-auto">
           {/* Primary Button */}

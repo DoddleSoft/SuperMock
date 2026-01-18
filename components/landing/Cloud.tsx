@@ -9,12 +9,9 @@ export default function Cloud() {
     <div className="w-full mt-6 md:mt-8">
       <div className="max-w-3xl mx-auto">
         <div className="group relative glass-panel p-5 md:p-8 rounded-2xl md:rounded-3xl flex flex-col gap-4 md:gap-6 border border-black/5 bg-gray-50 hover:bg-white transition-all duration-500 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1">
-          {/* Subtle Gradient & Glow */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50/0 via-blue-50/30 to-blue-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-          {/* Scaled the blur effect for mobile/desktop */}
           <div className="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-blue-500/5 blur-[40px] md:blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-500/10 transition-colors duration-500"></div>
 
-          {/* Top Section: Icon + Text */}
           <div className="flex items-start gap-3 md:gap-5 relative z-10">
             <div className="flex-shrink-0 p-2.5 md:p-3 bg-blue-50 rounded-xl md:rounded-2xl border border-blue-100 text-blue-600 group-hover:scale-110 transition-transform duration-300 shadow-sm">
               <HardDrive className="w-5 h-5 md:w-6 md:h-6" />
@@ -29,10 +26,10 @@ export default function Cloud() {
               <p className="text-sm md:text-base text-supermock-text-secondary leading-relaxed">
                 SuperMock includes{" "}
                 <span className="text-supermock-text font-medium border-b border-blue-200">
-                  10GB secure cloud storage for free
+                  10GB secure cloud storage for free{" "}
                 </span>
-                . That's enough for thousands of student records. Upgrade
-                anytime if you scale up.
+                . That's enough for most centres. Upgrade anytime whenever you
+                scale up.
               </p>
             </div>
           </div>

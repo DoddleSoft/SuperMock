@@ -58,7 +58,6 @@ export default function Pricing() {
             <div className="space-y-4 md:space-y-5 mb-8 md:mb-10">
               {[
                 "Unlimited Students, Papers & Tests",
-                "Access to All 4 Modules",
                 "Owner, Admin & Teacher Roles",
                 "10GB Secure Cloud Storage",
                 "Free Updates for 12 Months",

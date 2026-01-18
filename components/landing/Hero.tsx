@@ -45,7 +45,7 @@ export default function Hero() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900 p-1">
               IELTS
             </span>{" "}
-            mock tests
+            mock test
           </h1>
 
           {/* 3. Subtext */}
@@ -56,8 +56,8 @@ export default function Hero() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Create, manage, and analyse IELTS mock exams across all four modules
-            with our industry-leading dashboard.
+            Create, manage, and run unlimited CD mock tests in your IELTS
+            training centre with our industry-leading software.
           </p>
 
           {/* 4. CTA Buttons */}
@@ -89,8 +89,8 @@ export default function Hero() {
             }`}
           >
             {[
-              "Unlimited questions",
-              "Unlimited mock tests",
+              "Custom questions",
+              "Unlimited tests",
               "Fixed yearly pricing",
             ].map((item, idx) => (
               <div

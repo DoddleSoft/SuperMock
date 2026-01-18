@@ -30,10 +30,7 @@ export default function WhatsIncluded() {
           </p>
         </div>
 
-        {/* --- Grid Section --- 
-            Mobile: 1 col, Tablet: 2 cols, Desktop: 4 cols
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
           {/* Feature Cards */}
           {[
             {
@@ -43,27 +40,16 @@ export default function WhatsIncluded() {
               color: "blue",
             },
             {
-              title: "All 4 Modules",
-              icon: Layout,
-              desc: "Seamlessly conduct all modules (Listening, Reading, and Writing).",
-              color: "purple",
-            },
-            {
               title: "Cloud Storage",
               icon: HardDrive,
               desc: "10 GB of cloud storage for students, test papers, and results.",
               color: "amber",
             },
-            {
-              title: "Cross-Platform",
-              icon: Globe,
-              desc: "Zero compatibility issues on Windows, Mac, or tablets.",
-              color: "green",
-            },
+
             {
               title: "Instant Updates",
               icon: Zap,
-              desc: "We push new features and improvements automatically.",
+              desc: "Updates are automatic and instant—no manual installs needed.",
               color: "yellow",
             },
             {
@@ -89,25 +75,20 @@ export default function WhatsIncluded() {
               key={index}
               className="group relative p-5 md:p-6 rounded-2xl bg-white border border-black/5 hover:border-black/10 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden h-full"
             >
-              {/* Background Gradient Effect */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-${item.color}-50/0 to-${item.color}-50/0 group-hover:from-${item.color}-50/50 group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100`}
-              ></div>
-
-              <div className="relative z-10 flex flex-row md:flex-col items-center md:items-start gap-4 mb-3 md:mb-4">
-                <div className="flex-shrink-0">
-                  <div
-                    className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 flex items-center justify-center text-supermock-text border border-black/5 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:bg-${item.color}-50 group-hover:text-${item.color}-600`}
-                  >
-                    <item.icon className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                </div>
-                <h3 className="font-bold text-lg text-supermock-text group-hover:text-black transition-colors">
+              <div className="relative z-10 flex justify-between items-center gap-4 mb-5">
+                <h3 className="font-bold text-xl leading-tight group-hover:text-black transition-colors">
                   {item.title}
                 </h3>
+
+                <div
+                  className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 flex items-center justify-center border border-black/5 group-hover:scale-110 transition-transform duration-300 shadow-sm
+    group-hover:bg-${item.color}-50 group-hover:text-${item.color}-600`}
+                >
+                  <item.icon className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
               </div>
 
-              <p className="relative z-10 text-sm text-supermock-text-secondary group-hover:text-supermock-text/80 transition-colors pl-[3.5rem] md:pl-0">
+              <p className="relative z-10 text-sm transition-colors pl-[3.5rem] md:pl-0">
                 {item.desc}
               </p>
             </div>

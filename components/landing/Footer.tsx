@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-black/5 bg-gray-50 pt-12 pb-8 md:pt-16 md:pb-12">
       <div className="px-4 md:px-8 mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Brand Column */}
           <div className="space-y-4 md:space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
             <div className="flex items-center gap-2">
@@ -44,7 +44,6 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-
           {/* Product */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <h3 className="font-semibold text-supermock-text mb-4 md:mb-6">
@@ -71,7 +70,7 @@ export default function Footer() {
           </div>
 
           {/* Legal */}
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+          {/* <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <h3 className="font-semibold text-supermock-text mb-4 md:mb-6">
               Legal
             </h3>
@@ -93,7 +92,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -116,10 +115,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <p className="text-xs md:text-sm text-supermock-text-secondary/60">
-            &copy; {new Date().getFullYear()} Doddlesoft. All rights reserved.
+            &copy; {new Date().getFullYear()} Supermock all rights reserved.
           </p>
           <p className="text-xs md:text-sm text-supermock-text-secondary/60">
-            Designed by Doddlesoft.inc.
+            Designed by Doddlesoft
           </p>
         </div>
       </div>

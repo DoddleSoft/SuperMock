@@ -27,22 +27,12 @@ export default function WhyChoose() {
     {
       name: "Maintenance & Updates",
       competitors: { available: false, text: "Extra developer costs" },
-      supermock: { available: true, text: "Included free in the package" },
-    },
-    {
-      name: "AI-Powered Grading",
-      competitors: { available: false, text: "Basic if/else logic" },
-      supermock: { available: true, text: "Smart AI grading" },
+      supermock: { available: true, text: "Included in the package" },
     },
     {
       name: "Cloud Platform",
       competitors: { available: true, text: "Limited access" },
       supermock: { available: true, text: "Full cloud access" },
-    },
-    {
-      name: "Custom Modules",
-      competitors: { available: false, text: "Not available" },
-      supermock: { available: true, text: "All 4 modules" },
     },
   ];
 
@@ -154,12 +144,12 @@ export default function WhyChoose() {
             {/* Table Footer */}
             <div className="grid grid-cols-3 gap-0 border-t border-slate-200 bg-slate-50">
               <div className="col-span-1 px-6 py-4"></div>
-              <div className="col-span-1 px-6 py-4 text-center border-l border-slate-200">
+              <div className="col-span-1 px-6 py-4 text-start border-l border-slate-200">
                 <p className="text-sm font-semibold text-slate-500">
                   High ongoing costs
                 </p>
               </div>
-              <div className="col-span-1 px-6 py-4 text-center border-l border-slate-200 bg-gradient-to-r from-red-50 to-orange-50">
+              <div className="col-span-1 px-6 py-4 text-start border-l border-slate-200 bg-gradient-to-r from-red-50 to-orange-50">
                 <p className="text-sm font-bold text-red-700">
                   Best value for IELTS centres
                 </p>
@@ -228,14 +218,6 @@ export default function WhyChoose() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Bottom Note */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-slate-600">
-              <span className="font-semibold text-slate-900">AI Grading</span>{" "}
-              feature coming soon • All prices exclude VAT
-            </p>
           </div>
         </div>
       </div>
