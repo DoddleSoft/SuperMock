@@ -1,99 +1,103 @@
-import {
-  Check,
-  Globe,
-  HardDrive,
-  Layout,
-  Users,
-  Zap,
-  Shield,
-  Headphones,
-  GitGraph,
-  ChartNoAxesColumnIncreasing,
-  ChartColumnIncreasing,
-  ChartNoAxesCombined,
-} from "lucide-react";
+import { HardDrive, Zap, Headphones, ChartNoAxesCombined } from "lucide-react";
 
 export default function WhatsIncluded() {
+  const features = [
+    // ROW 1: WIDE + SMALL
+    {
+      title: "Limitless Scale",
+      desc: "Add unlimited students, mock tests and scale your business with us.",
+      icon: ChartNoAxesCombined,
+      className: "md:col-span-3", // Wide
+      colorClass: "bg-teal-50 text-teal-600 group-hover:bg-teal-100",
+      gradient: "from-teal-50/50 to-transparent",
+    },
+    {
+      title: "Priority Support",
+      desc: "Direct talk to our technical team via Whatsapp or Email.",
+      icon: Headphones,
+      className: "md:col-span-2", // Small
+      colorClass: "bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100",
+      gradient: "from-indigo-50/50 to-transparent",
+    },
+
+    // ROW 2: SMALL + WIDE
+    {
+      title: "Cloud Storage",
+      desc: "10 GB of secure cloud storage included for your data.",
+      icon: HardDrive,
+      className: "md:col-span-2", // Small
+      colorClass: "bg-amber-50 text-amber-600 group-hover:bg-amber-100",
+      gradient: "from-amber-50/50 to-transparent",
+    },
+    {
+      title: "Always Updated",
+      desc: "Experience continuous improvements with instant updates.",
+      icon: Zap,
+      className: "md:col-span-3", // Wide
+      colorClass: "bg-blue-50 text-blue-600 group-hover:bg-blue-100",
+      gradient: "from-blue-50/50 to-transparent",
+    },
+  ];
+
   return (
     <section
       id="features"
-      className="relative flex items-center justify-center px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 overflow-hidden"
+      className="relative flex items-center justify-center px-4 md:px-8 py-20 lg:py-28 overflow-hidden"
     >
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
+      {/* Background decoration (Dot Pattern) */}
+      <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
         {/* --- Header Section --- */}
-        <div className="text-center mb-12 md:mb-16 lg:mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gradient-glass mb-4 md:mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
             Everything You Need <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-supermock-text to-supermock-text-secondary">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900">
               Included in One Plan
             </span>
           </h2>
-          <p className="max-w-2xl lg:max-w-4xl mx-auto text-base md:text-lg text-supermock-text-secondary">
-            No hidden fees. You get the full power of SuperMock from day one.
+          <p className="max-w-2xl mx-auto text-lg text-slate-500">
+            No hidden fees. You get the full power of SuperMock from day one
+            with a design built for scale.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
-          {/* Feature Cards */}
-          {[
-            {
-              title: "Continuous updates",
-              icon: GitGraph,
-              desc: "New features and improvements added regularly at no extra cost.",
-              color: "blue",
-            },
-            {
-              title: "Cloud Storage",
-              icon: HardDrive,
-              desc: "10 GB of cloud storage for students, test papers, and results.",
-              color: "amber",
-            },
-
-            {
-              title: "Instant Updates",
-              icon: Zap,
-              desc: "Updates are automatic and instant—no manual installs needed.",
-              color: "yellow",
-            },
-            {
-              title: "Data Security",
-              icon: Shield,
-              desc: "We use enterprise-grade data security and backups.",
-              color: "red",
-            },
-            {
-              title: "Priority Support",
-              icon: Headphones,
-              desc: "Get direct access to our technical team for any questions.",
-              color: "indigo",
-            },
-            {
-              title: "Uncapped Growth",
-              icon: ChartNoAxesCombined,
-              desc: "We never charge extra for adding more students, or tests.",
-              color: "teal",
-            },
-          ].map((item, index) => (
+        {/* --- Bento Grid --- */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 auto-rows-[minmax(180px,auto)]">
+          {features.map((item, index) => (
             <div
               key={index}
-              className="group relative p-5 md:p-6 rounded-2xl bg-white border border-black/5 hover:border-black/10 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden h-full"
+              className={`
+                group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1
+                ${item.className}
+              `}
             >
-              <div className="relative z-10 flex justify-between items-center gap-4 mb-5">
-                <h3 className="font-bold text-xl leading-tight group-hover:text-black transition-colors">
-                  {item.title}
-                </h3>
-
+              <div className="relative z-10 h-full px-8 py-6 flex flex-col justify-between">
+                {/* Header: Icon & Title */}
                 <div
-                  className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 flex items-center justify-center border border-black/5 group-hover:scale-110 transition-transform duration-300 shadow-sm
-    group-hover:bg-${item.color}-50 group-hover:text-${item.color}-600`}
+                  className={`flex flex-col gap-4 ${
+                    item.className.includes("col-span-2")
+                      ? "md:flex-row md:items-center md:justify-between"
+                      : ""
+                  }`}
                 >
-                  <item.icon className="w-5 h-5 md:w-6 md:h-6" />
+                  <div
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${item.colorClass}`}
+                  >
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="mt-6">
+                  <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-black transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm font-medium text-slate-500 leading-relaxed group-hover:text-slate-600">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
-
-              <p className="relative z-10 text-sm transition-colors pl-[3.5rem] md:pl-0">
-                {item.desc}
-              </p>
             </div>
           ))}
         </div>

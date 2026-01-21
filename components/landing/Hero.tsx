@@ -3,14 +3,55 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Play, Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   const [isMounted, setIsMounted] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const slides = [
+    {
+      src: "/dashboard.png",
+      alt: "SuperMock dashboard page overview",
+      label: "Dashboard",
+      width: 1200,
+      height: 800,
+    },
+    {
+      src: "/students.png",
+      alt: "Student management system view",
+      label: "Students",
+      width: 1200,
+      height: 800,
+    },
+    {
+      src: "/test.png",
+      alt: "Mock test experience for students",
+      label: "Test",
+      width: 1200,
+      height: 800,
+    },
+    {
+      src: "/create.png",
+      alt: "Create a new mock test",
+      label: "Create",
+      width: 1200,
+      height: 800,
+    },
+  ];
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [slides.length]);
 
   return (
     <section className="relative flex items-center justify-center px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
@@ -18,8 +59,9 @@ export default function Hero() {
       <div className={` ${isMounted ? "opacity-100" : "opacity-0"}`} />
 
       <div className="relative z-10 grid gap-12 lg:gap-8 max-w-7xl mx-auto grid-cols-1 lg:grid-cols-2 items-center">
+        {/* --- LEFT COLUMN: CONTENT --- */}
         <div className="flex flex-col items-center lg:items-start max-w-2xl mx-auto text-center lg:text-left">
-          {/* 1. Badge */}
+          {/* Badge */}
           <div
             className={`transition-all duration-700 delay-100 ${
               isMounted
@@ -48,7 +90,7 @@ export default function Hero() {
             mock test
           </h1>
 
-          {/* 3. Subtext */}
+          {/* Subtext */}
           <p
             className={`max-w-md lg:max-w-xl text-base md:text-lg leading-relaxed text-slate-500 mb-8 md:mb-10 transition-all duration-700 delay-300 ${
               isMounted
@@ -60,7 +102,7 @@ export default function Hero() {
             training centre with our industry-leading software.
           </p>
 
-          {/* 4. CTA Buttons */}
+          {/* CTA Buttons */}
           <div
             className={`flex flex-col w-full sm:w-auto sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-500 ${
               isMounted
@@ -81,6 +123,7 @@ export default function Hero() {
             </Link>
           </div>
 
+          {/* Features List */}
           <div
             className={`flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-8 md:mt-10 transition-all duration-700 delay-700 ${
               isMounted
@@ -108,50 +151,43 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* --- RIGHT COLUMN: IMAGES & NAVIGATION --- */}
         <div
-          className={`relative w-full max-w-2xl mx-auto mt-4 lg:mt-0 transition-all duration-1000 delay-500 ${
-            isMounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-          }`}
+          className={`relative w-full max-w-2xl mx-auto mt-4 lg:mt-0 flex flex-col items-center transition-all duration-1000 delay-500`}
         >
-          {/* Glass Card Container */}
-          <div className="p-2 rounded-2xl md:rounded-3xl bg-white/50 backdrop-blur-md border border-white/50">
-            <div className="relative overflow-hidden aspect-video rounded-xl md:rounded-2xl group border border-slate-100 bg-slate-900">
-              {/* Image */}
+          {/* Image Container */}
+          <div className="overflow-hidden rounded-xl shadow-lg border border-slate-100 bg-white">
+            <div className="relative">
               <Image
-                src="/image.png"
-                alt="SuperMock Dashboard Interface"
-                fill
-                className="object-cover opacity-80 mix-blend-overlay transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                src={slides[activeSlide].src}
+                alt={slides[activeSlide].alt}
+                width={slides[activeSlide].width || 1200}
+                height={slides[activeSlide].height || 800}
+                className="w-auto h-auto opacity-90 transition-opacity duration-700 block"
                 priority
               />
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-
-              {/* Play Button (Interactive) */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  className="group/play flex flex-col items-center gap-3 md:gap-4 transition-transform duration-500 hover:scale-110 cursor-pointer z-20 focus:outline-none"
-                  aria-label="Watch Demo Video"
-                  onClick={() => console.log("Open Video Modal Here")}
-                >
-                  <div className="relative flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24">
-                    {/* Ping Rings */}
-                    <div className="absolute inset-0 rounded-full bg-white/20 animate-ping"></div>
-                    <div className="absolute inset-0 rounded-full bg-white/20 animate-[ping_2s_infinite_0.5s]"></div>
-
-                    {/* Button Core */}
-                    <div className="relative z-10 flex items-center justify-center w-full h-full transition-all duration-300 rounded-full bg-white/10 backdrop-blur-md border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.2)] group-hover/play:bg-red-600 group-hover/play:border-red-600">
-                      <Play className="w-6 h-6 sm:w-10 sm:h-10 text-white fill-white ml-1 transition-transform group-hover/play:scale-90" />
-                    </div>
-                  </div>
-                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-white drop-shadow-md group-hover/play:text-red-100 transition-colors">
-                    Watch Demo
-                  </span>
-                </button>
-              </div>
             </div>
+          </div>
+
+          {/* Text Description */}
+          <div className="text-center text-sm font-semibold tracking-wide text-slate-600 mt-4">
+            {slides[activeSlide].alt}
+          </div>
+
+          {/* Navigation Dots */}
+          <div className="flex items-center gap-2 mt-4">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeSlide === index
+                    ? "w-8 bg-red-600" // Active: Wide & Red
+                    : "w-2 bg-slate-300 hover:bg-red-300" // Inactive: Dot & Gray
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
