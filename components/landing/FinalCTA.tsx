@@ -7,7 +7,7 @@ export default function FinalCTA() {
       <div className="relative z-10 max-w-5xl mx-auto space-y-8 md:space-y-12">
         {/* Headline */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-supermock-text max-w-4xl mx-auto">
-          Start running unlimited <br />
+          Start conducting unlimited <br />
           <span className="relative inline-block mt-1 md:mt-2">
             {/* Background Blur Effect */}
             <span className="absolute inset-0 blur-xl md:blur-2xl opacity-20 transform scale-110"></span>

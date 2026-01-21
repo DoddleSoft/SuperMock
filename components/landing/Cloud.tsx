@@ -65,26 +65,26 @@ export default function Cloud() {
                   {
                     size: "20GB",
                     price: "499",
-                    tag: "Most Popular",
-                    // Explicit classes because Tailwind can't interpolate dynamic strings
-                    styles: "bg-blue-50/50 border-blue-200 shadow-sm",
-                    tagBg: "bg-blue-500",
+                    tag: null,
+                    styles:
+                      "bg-white border-black/5 hover:border-blue-200 hover:shadow-sm border-gray-200",
+                    tagBg: "",
                     textStyle: "text-blue-700",
                   },
                   {
                     size: "50GB",
                     price: "1,499",
                     tag: "Best Value",
-                    styles: "bg-green-50/50 border-green-200 shadow-sm",
-                    tagBg: "bg-green-600",
-                    textStyle: "text-green-700",
+                    styles: "bg-red-50/50 border-red-200 shadow-sm",
+                    tagBg: "bg-red-600",
+                    textStyle: "text-red-700",
                   },
                   {
                     size: "100GB",
                     price: "2,999",
                     tag: null,
                     styles:
-                      "bg-white border-black/5 hover:border-blue-200 hover:shadow-sm",
+                      "bg-white border-black/5 hover:border-blue-200 hover:shadow-sm border-gray-300",
                     tagBg: "",
                     textStyle: "group-hover/card:text-blue-600",
                   },
