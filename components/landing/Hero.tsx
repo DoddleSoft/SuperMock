@@ -54,7 +54,7 @@ export default function Hero() {
   }, [slides.length]);
 
   return (
-    <section className="relative flex items-center justify-center px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
+    <section className="relative flex items-center justify-center px-4 md:px-8 pb-14 sm:pb-16 md:pb-20 lg:pb-28 overflow-hidden">
       {/* Background Fade-in */}
       <div className={` ${isMounted ? "opacity-100" : "opacity-0"}`} />
 

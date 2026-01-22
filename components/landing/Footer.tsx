@@ -1,12 +1,5 @@
 import Link from "next/link";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-} from "lucide-react";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -43,6 +36,30 @@ export default function Footer() {
               >
                 <Facebook className="w-5 h-5" />
               </Link>
+              <Link
+                href="https://www.instagram.com/supermock.ielts/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-supermock-red transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </Link>
+              <Link
+                href="https://www.tiktok.com/@supermock.ielts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-supermock-red transition-colors"
+                aria-label="TikTok"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="w-5 h-5"
+                  fill="currentColor"
+                >
+                  <path d="M17.5 3c.5 1.8 1.9 3.2 3.7 3.7v3.1c-1.5.1-3-.3-4.2-1v7.2a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.3a2.9 2.9 0 1 0 2.9 2.9V3h2.6Z" />
+                </svg>
+              </Link>
             </div>
           </div>
 
@@ -70,31 +87,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Legal */}
-          {/* <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <h3 className="font-semibold text-supermock-text mb-4 md:mb-6">
-              Legal
-            </h3>
-            <ul className="space-y-3 md:space-y-4 text-supermock-text-secondary text-sm md:text-base">
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-supermock-text transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-supermock-text transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div> */}
 
           {/* Contact */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">

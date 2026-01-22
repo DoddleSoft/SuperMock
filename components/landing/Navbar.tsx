@@ -18,7 +18,7 @@ export default function Navbar() {
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    id: string
+    id: string,
   ) => {
     e.preventDefault(); // Prevent instant jump
     const element = document.getElementById(id);
@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 pointer-events-none ${
+      className={`sticky top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 pointer-events-none ${
         scrolled ? "py-2 md:py-4" : "py-4 md:py-6"
       }`}
     >
