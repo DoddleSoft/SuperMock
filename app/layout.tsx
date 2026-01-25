@@ -8,8 +8,54 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SuperMock - Professional IELTS Mock Testing",
-  description: "The premium, cloud-based mock test system for IELTS centres.",
+  title: "SuperMock - Professional IELTS Mock Testing Platform",
+  description:
+    "A cloud-based mock test system designed for IELTS centres to seamlessly conduct mock tests.",
+  metadataBase: new URL("https://supermock.net"),
+  applicationName: "SuperMock",
+  generator: "Next.js",
+  keywords: [
+    "IELTS",
+    "mock test",
+    "IELTS centre",
+    "CD IELTS",
+    "English assessment",
+    "exam practice",
+    "online testing",
+    "assessment platform",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "SuperMock - Professional IELTS Mock Testing Platform",
+    description:
+      "A cloud-based mock test system designed for IELTS centres to seamlessly conduct mock tests.",
+    siteName: "SuperMock",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SuperMock - Professional IELTS Mock Testing Platform",
+    description:
+      "A cloud-based mock test system designed for IELTS centres to seamlessly conduct mock tests.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
