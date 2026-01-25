@@ -36,12 +36,6 @@ export const metadata: Metadata = {
     siteName: "SuperMock",
     locale: "en_US",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "SuperMock - Professional IELTS Mock Testing Platform",
-    description:
-      "A cloud-based mock test system designed for IELTS centres to seamlessly conduct mock tests.",
-  },
   robots: {
     index: true,
     follow: true,
