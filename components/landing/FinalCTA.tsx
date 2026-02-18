@@ -37,7 +37,7 @@ export default function FinalCTA() {
 
           {/* WhatsApp Button */}
           <Link
-            href="https://wa.me/8801635931004?text=Hi%20SuperMock%20team%2C%20I%20would%20like%20to%20know%20more%20about%20your%20IELTS%20mock%20test%20platform."
+            href="https://wa.me/8801847089622?text=Hi%20SuperMock%20team%2C%20I%20would%20like%20to%20know%20more%20about%20your%20IELTS%20mock%20test%20platform."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto group relative px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-bold text-[#25D366] bg-white border border-[#25D366]/20 rounded-xl md:rounded-full hover:scale-[1.01] hover:shadow-lg transition-all shadow-md group/whatsapp flex items-center justify-center gap-2 md:gap-3"
