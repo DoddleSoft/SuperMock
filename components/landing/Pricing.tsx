@@ -8,7 +8,7 @@ export default function Pricing() {
       id="pricing"
       className="relative px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 bg-gray-50"
     >
-      <div className="max-w-4xl mx-auto relative z-10 w-full">
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* --- Header --- */}
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gradient-glass mb-4 md:mb-6 p-1">

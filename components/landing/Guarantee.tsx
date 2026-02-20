@@ -3,7 +3,7 @@ import { Award } from "lucide-react";
 export default function Guarantee() {
   return (
     <section className="relative px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 text-center overflow-hidden">
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
+      <div className="relative z-10 max-w-5xl mx-auto w-full">
         <div className="relative p-6 md:p-8 lg:p-12 rounded-3xl md:rounded-[2.5rem] bg-white shadow-2xl border border-black/5 hover:-translate-y-1 transition-transform duration-500 overflow-hidden">
           {/* Golden Gradient Border Effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5 opacity-50 pointer-events-none"></div>

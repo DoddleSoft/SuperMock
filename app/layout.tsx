@@ -61,7 +61,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} antialiased max-w-7xl mx-auto bg-supermock-base text-supermock-text`}
+        className={`${inter.variable} antialiased mx-auto bg-supermock-base text-supermock-text`}
       >
         {children}
       </body>

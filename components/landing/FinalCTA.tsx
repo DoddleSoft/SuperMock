@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function FinalCTA() {
   return (
     <section className="relative px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 overflow-hidden text-center bg-gray-50">
-      <div className="relative z-10 max-w-5xl mx-auto space-y-8 md:space-y-12">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-8 md:space-y-12">
         {/* Headline */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-supermock-text max-w-4xl mx-auto">
           Start conducting unlimited <br />
