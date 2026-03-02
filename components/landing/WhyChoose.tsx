@@ -1,225 +1,138 @@
 "use client";
 
 import { Check, X } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
 export default function WhyChoose() {
+  const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: i * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
+      },
+    }),
+  };
   const features = [
     {
       name: "Question Customization",
-      competitors: { available: false, text: "Hard-coded questions" },
-      supermock: { available: true, text: "Unlimited custom questions" },
+      comp: "Hard-coded questions",
+      sm: "Unlimited custom questions",
+      compOk: false,
     },
     {
       name: "Student Limits",
-      competitors: { available: false, text: "Per-student fees" },
-      supermock: { available: true, text: "Unlimited students" },
+      comp: "Per-student fees",
+      sm: "Unlimited students",
+      compOk: false,
     },
     {
       name: "Mock Test Limits",
-      competitors: { available: false, text: "Limited by subscription" },
-      supermock: { available: true, text: "Unlimited tests" },
+      comp: "Limited by subscription",
+      sm: "Unlimited tests",
+      compOk: false,
     },
     {
       name: "Annual Cost",
-      competitors: { available: false, text: "High recurring costs" },
-      supermock: { available: true, text: "Fixed yearly rate" },
+      comp: "High recurring costs",
+      sm: "Fixed yearly rate",
+      compOk: false,
     },
     {
       name: "Maintenance & Updates",
-      competitors: { available: false, text: "Extra developer costs" },
-      supermock: { available: true, text: "Included in the package" },
+      comp: "Extra developer costs",
+      sm: "Included in the package",
+      compOk: false,
     },
     {
       name: "Cloud Platform",
-      competitors: { available: true, text: "Limited access" },
-      supermock: { available: true, text: "Full cloud access" },
+      comp: "Limited access",
+      sm: "Full cloud access",
+      compOk: true,
     },
   ];
 
   return (
-    <section className="relative flex items-center justify-center px-4 md:px-8 py-14 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
-        {/* Header Section */}
-        <div className="flex flex-col items-center mb-12 md:mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl max-w-3xl font-bold tracking-tight text-slate-900 mb-4 md:mb-6">
-            Why Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900">
-              SuperMock
-            </span>
+    <section className="py-20 md:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold tracking-widest uppercase text-red-600 mb-4">
+            Comparison
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight text-neutral-900">
+            Why choose SuperMock?
           </h2>
-          <p className="max-w-2xl text-base md:text-lg text-slate-600 leading-relaxed">
-            Compare features and see why IELTS centres choose us
+          <p className="text-base md:text-md mt-4 text-neutral-500 leading-relaxed">
+            See how we stack up against traditional solutions.
           </p>
         </div>
 
-        {/* Comparison Table */}
-        <div className="max-w-5xl mx-auto">
-          {/* Desktop Table */}
-          <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-2xl bg-white">
-            {/* Table Header */}
-            <div className="grid grid-cols-3 gap-0 border-b items-center border-slate-200">
-              <div className="col-span-1 bg-slate-50 px-6 py-5">
-                <div className="flex flex-col h-full">
-                  <h3 className="text-lg md:text-xl font-bold text-slate-800">
-                    Competitors
-                  </h3>
-                </div>
-              </div>
-
-              {/* Competitors Header */}
-              <div className="col-span-1 bg-gradient-to-br from-slate-100 to-slate-200 px-6 py-5">
-                <div className="flex flex-col h-full">
-                  <h3 className="text-lg md:text-xl font-bold text-slate-800">
-                    Competitors
-                  </h3>
-                </div>
-              </div>
-
-              {/* SuperMock Header */}
-              <div className="col-span-1 bg-gradient-to-br from-red-500 to-red-700 px-6 py-5">
-                <div className="flex flex-col h-full">
-                  <h3 className="text-lg md:text-xl font-bold text-white">
-                    SuperMock
-                  </h3>
-                </div>
-              </div>
+        {/* Clean table */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-12 md:mt-16"
+        >
+          {/* Header row */}
+          <div className="hidden md:grid grid-cols-[1fr_1fr_1fr] gap-0 pb-4 border-b border-neutral-200">
+            <div className="text-sm font-semibold tracking-widest text-neutral-400 uppercase">
+              Feature
             </div>
+            <div className="text-sm font-semibold tracking-widest text-neutral-400 uppercase">
+              Others
+            </div>
+            <div className="text-sm font-semibold tracking-widest text-red-600 uppercase">
+              SuperMock
+            </div>
+          </div>
 
-            {/* Table Body */}
-            <div className="divide-y divide-slate-100">
-              {features.map((feature, index) => (
+          {features.map((f, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              variants={fadeUp}
+              className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-2 md:gap-0 py-5 md:py-6 border-b border-neutral-100 last:border-0"
+            >
+              <div className="text-md font-semibold text-neutral-900 md:text-base">
+                {f.name}
+              </div>
+              <div className="flex items-center gap-4 text-md text-neutral-500">
                 <div
-                  key={index}
-                  className="grid grid-cols-3 gap-0 hover:bg-slate-50/50 transition-colors group"
+                  className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${f.compOk ? "bg-neutral-200" : "bg-red-100"}`}
                 >
-                  {/* Feature Name */}
-                  <div className="col-span-1 px-6 py-5 flex items-center gap-3 bg-white">
-                    <span className="text-sm md:text-base font-semibold text-slate-800">
-                      {feature.name}
-                    </span>
-                  </div>
-
-                  {/* Competitors Value */}
-                  <div className="col-span-1 px-6 py-5 flex items-center border-l border-slate-100 bg-slate-50/30">
-                    <div className="flex flex-row items-center gap-4">
-                      {feature.competitors.available ? (
-                        <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center">
-                          <Check className="w-4 h-4 text-slate-600" />
-                        </div>
-                      ) : (
-                        <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
-                          <X className="w-4 h-4 text-red-600" />
-                        </div>
-                      )}
-                      <span className="text-md text-slate-600">
-                        {feature.competitors.text}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* SuperMock Value */}
-                  <div className="col-span-1 px-6 py-5 flex items-center border-l border-b border-red-100 bg-gradient-to-br from-red-100/30 to-orange-50/90">
-                    <div className="flex flex-row items-center gap-4">
-                      {feature.supermock.available ? (
-                        <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center shadow-sm">
-                          <Check
-                            className="w-4 h-4 text-white"
-                            strokeWidth={3}
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center">
-                          <X className="w-4 h-4 text-slate-600" />
-                        </div>
-                      )}
-                      <span className="text-md text-gray-900 font-semibold">
-                        {feature.supermock.text}
-                      </span>
-                    </div>
-                  </div>
+                  {f.compOk ? (
+                    <Check
+                      className="w-2.5 h-2.5 text-neutral-500"
+                      strokeWidth={3}
+                    />
+                  ) : (
+                    <X className="w-2.5 h-2.5 text-red-500" strokeWidth={3} />
+                  )}
                 </div>
-              ))}
-            </div>
-
-            {/* Table Footer */}
-            <div className="grid grid-cols-3 gap-0 border-t border-slate-200 bg-slate-50">
-              <div className="col-span-1 px-6 py-4"></div>
-              <div className="col-span-1 px-6 py-4 text-start border-l border-slate-200">
-                <p className="text-sm font-semibold text-slate-500">
-                  High ongoing costs
-                </p>
+                {f.comp}
               </div>
-              <div className="col-span-1 px-6 py-4 text-start border-l border-slate-200 bg-gradient-to-r from-red-50 to-orange-50">
-                <p className="text-sm font-bold text-red-700">
-                  Best value for IELTS centres
-                </p>
+              <div className="flex items-center gap-4 text-md font-medium text-neutral-900">
+                <div className="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <Check
+                    className="w-2.5 h-2.5 text-green-600"
+                    strokeWidth={3}
+                  />
+                </div>
+                {f.sm}
               </div>
-            </div>
-          </div>
-
-          {/* Mobile Card Layout */}
-          <div className="md:hidden space-y-4">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              >
-                {/* Feature Name Header */}
-                <div className="bg-slate-50 px-4 py-4 border-b border-slate-200">
-                  <h3 className="text-base font-bold text-slate-900">
-                    {feature.name}
-                  </h3>
-                </div>
-
-                {/* Competitors Section */}
-                <div className="px-4 py-4 border-b border-slate-100 bg-slate-50/40">
-                  <div className="flex items-start gap-3 mb-2">
-                    <span className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-                      Competitors
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {feature.competitors.available ? (
-                      <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-slate-600" />
-                      </div>
-                    ) : (
-                      <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                        <X className="w-3 h-3 text-red-600" />
-                      </div>
-                    )}
-                    <span className="text-sm text-slate-700">
-                      {feature.competitors.text}
-                    </span>
-                  </div>
-                </div>
-
-                {/* SuperMock Section */}
-                <div className="px-4 py-4 bg-gradient-to-br from-red-50/50 to-orange-50/30">
-                  <div className="flex items-start gap-3 mb-2">
-                    <span className="text-xs font-semibold text-red-700 uppercase tracking-wide">
-                      SuperMock
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {feature.supermock.available ? (
-                      <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center shadow-sm flex-shrink-0">
-                        <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                      </div>
-                    ) : (
-                      <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
-                        <X className="w-3 h-3 text-slate-600" />
-                      </div>
-                    )}
-                    <span className="text-sm font-semibold text-slate-800">
-                      {feature.supermock.text}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

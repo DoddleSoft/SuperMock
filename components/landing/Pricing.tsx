@@ -11,10 +11,10 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* --- Header --- */}
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gradient-glass mb-4 md:mb-6 p-1">
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight mb-4 md:mb-6 text-neutral-900">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-base md:text-lg text-supermock-text-secondary max-w-2xl mx-auto">
+          <p className="text-base text-supermock-text-secondary max-w-2xl mx-auto">
             Invest in your centre's growth with a single, predictable yearly
             payment.
           </p>
@@ -55,7 +55,7 @@ export default function Pricing() {
             </div>
 
             {/* Features List */}
-            <div className="space-y-4 md:space-y-5 mb-8 md:mb-10">
+            <div className="space-y-6 mb-8 md:mb-10">
               {[
                 "Unlimited Students, Papers & Tests",
                 "Owner, Admin & Teacher Roles",
@@ -65,7 +65,7 @@ export default function Pricing() {
               ].map((feature, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start md:items-center gap-3 text-left px-2 md:px-8"
+                  className="flex items-start md:items-center gap-4 text-left px-2 md:px-8"
                 >
                   <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-supermock-red/10 flex items-center justify-center mt-0.5 md:mt-0">
                     <Check

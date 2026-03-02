@@ -59,7 +59,6 @@ export default function Hero() {
       <div className={` ${isMounted ? "opacity-100" : "opacity-0"}`} />
 
       <div className="relative z-10 grid gap-12 lg:gap-8 max-w-7xl mx-auto grid-cols-1 lg:grid-cols-2 items-center">
-        {/* --- LEFT COLUMN: CONTENT --- */}
         <div className="flex flex-col items-center lg:items-start max-w-2xl mx-auto text-center lg:text-left">
           {/* Badge */}
           <div

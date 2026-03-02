@@ -40,66 +40,64 @@ export default function WhatsIncluded() {
   ];
 
   return (
-    <section
-      id="features"
-      className="relative flex items-center justify-center px-4 md:px-8 py-20 lg:py-28 overflow-hidden"
-    >
+    <section id="features" className="py-20 md:py-32 bg-white">
       {/* Background decoration (Dot Pattern) */}
-      <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#9ca3af_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
-        {/* --- Header Section --- */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-            Everything You Need <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900">
-              Included in One Plan
-            </span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-xs font-semibold tracking-widest uppercase text-red-600 mb-4">
+            Plan
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight mb-4 md:mb-6 text-neutral-900">
+            Everything Included in One Plan
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-slate-500">
+          <p className="text-base mt-4 text-neutral-500 leading-relaxed">
             No hidden fees. You get the full power of SuperMock from day one
             with a design built for scale.
           </p>
         </div>
 
         {/* --- Bento Grid --- */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 auto-rows-[minmax(180px,auto)]">
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className={`
+        <div className="mt-12 md:mt-16 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 auto-rows-[minmax(180px,auto)]">
+            {features.map((item, index) => (
+              <div
+                key={index}
+                className={`
                 group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1
                 ${item.className}
               `}
-            >
-              <div className="relative z-10 h-full px-8 py-6 flex flex-col justify-between">
-                {/* Header: Icon & Title */}
-                <div
-                  className={`flex flex-col gap-4 ${
-                    item.className.includes("col-span-2")
-                      ? "md:flex-row md:items-center md:justify-between"
-                      : ""
-                  }`}
-                >
+              >
+                <div className="relative z-10 h-full px-8 py-6 flex flex-col justify-between">
+                  {/* Header: Icon & Title */}
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${item.colorClass}`}
+                    className={`flex flex-col gap-4 ${
+                      item.className.includes("col-span-2")
+                        ? "md:flex-row md:items-center md:justify-between"
+                        : ""
+                    }`}
                   >
-                    <item.icon className="w-6 h-6" />
+                    <div
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${item.colorClass}`}
+                    >
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="mt-6">
+                    <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-black transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm font-medium text-slate-500 leading-relaxed group-hover:text-slate-600">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="mt-6">
-                  <h3 className="font-bold text-xl text-slate-900 mb-2 group-hover:text-black transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm font-medium text-slate-500 leading-relaxed group-hover:text-slate-600">
-                    {item.desc}
-                  </p>
-                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

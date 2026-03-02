@@ -27,40 +27,14 @@ export default function Footer() {
               Mock test platform for IELTS training centres.
             </p>
 
-            <div className="flex items-center gap-4 justify-center sm:justify-start text-supermock-text-secondary/60">
+            <div className="sm:justify-start text-supermock-text-secondary/60 mt-2">
               <Link
-                href="https://www.facebook.com/supermock.net"
+                href="https://www.facebook.com/Supermock.fb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-supermock-red transition-colors"
               >
-                <Facebook className="w-5 h-5" />
-              </Link>
-
-              <Link
-                href="https://www.instagram.com/supermock.ielts/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-supermock-red transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </Link>
-
-              <Link
-                href="https://www.tiktok.com/@supermock.ielts"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-supermock-red transition-colors"
-                aria-label="TikTok"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  className="w-5 h-5"
-                  fill="currentColor"
-                >
-                  <path d="M17.5 3c.5 1.8 1.9 3.2 3.7 3.7v3.1c-1.5.1-3-.3-4.2-1v7.2a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.3a2.9 2.9 0 1 0 2.9 2.9V3h2.6Z" />
-                </svg>
+                <Facebook className="w-6 h-6" />
               </Link>
             </div>
           </div>
