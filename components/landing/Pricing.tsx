@@ -1,8 +1,29 @@
+"use client";
 import { ArrowRight, Check, Info } from "lucide-react";
 import Link from "next/link";
-import Cloud from "./Cloud";
+import { useState } from "react";
 
 export default function Pricing() {
+  const [isYearly, setIsYearly] = useState(true);
+
+  const pricingData = {
+    yearly: {
+      price: "18,990",
+      originalPrice: "35,990",
+      discount: "47% off",
+      period: "/year",
+      monthlyEquivalent: "1,583",
+    },
+    sixMonth: {
+      price: "11,990",
+      originalPrice: "17,995",
+      discount: "33% off",
+      period: "/6 months",
+      monthlyEquivalent: "2,000",
+    },
+  };
+
+  const currentPlan = isYearly ? pricingData.yearly : pricingData.sixMonth;
   return (
     <section
       id="pricing"
@@ -15,9 +36,41 @@ export default function Pricing() {
             Simple, Transparent Pricing
           </h2>
           <p className="text-base text-supermock-text-secondary max-w-2xl mx-auto">
-            Invest in your centre's growth with a single, predictable yearly
-            payment.
+            Choose the plan that works best for your centre with our flexible
+            pricing options.
           </p>
+
+          {/* --- Toggle Switch --- */}
+          <div className="mt-8 flex items-center justify-center">
+            {/* Container: Fixed width ensures the sliding background calculates correctly */}
+            <div className="relative flex bg-gray-100 rounded-full p-1 w-64 border border-gray-200">
+              {/* Sliding Background Pill */}
+              <div
+                className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-in-out ${
+                  isYearly ? "left-1" : "left-[calc(50%+2px)]"
+                }`}
+              />
+
+              {/* Buttons: Removed all individual borders */}
+              <button
+                onClick={() => setIsYearly(true)}
+                className={`relative z-10 flex-1 py-2 text-xs font-medium transition-colors duration-300 ${
+                  isYearly ? "text-red-600 font-semibold" : "text-gray-500"
+                }`}
+              >
+                Yearly
+              </button>
+
+              <button
+                onClick={() => setIsYearly(false)}
+                className={`relative z-10 flex-1 py-2 text-xs font-medium transition-colors duration-300 ${
+                  !isYearly ? "text-red-600 font-semibold" : "text-gray-500"
+                }`}
+              >
+                6-Month
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* --- Card Container --- */}
@@ -28,18 +81,33 @@ export default function Pricing() {
 
             {/* Price Tag Section */}
             <div className="text-center mb-6 md:mb-8">
-              <h3 className="text-sm md:text-md font-semibold tracking-wider text-supermock-red uppercase mb-2">
-                Yearly License
-              </h3>
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <h3 className="text-sm md:text-md font-semibold tracking-wider text-supermock-red uppercase">
+                  {isYearly ? "Yearly Plan" : "Six-Month Plan"}
+                </h3>
+                <span className="px-2 py-0.5 text-xs font-bold bg-green-100 text-green-700 rounded-full">
+                  {currentPlan.discount}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-lg text-gray-400 line-through">
+                  BDT {currentPlan.originalPrice}
+                </span>
+                <span className="text-sm font-medium text-green-600">
+                  {currentPlan.discount}
+                </span>
+              </div>
+
               <div className="flex items-baseline justify-center gap-1 p-1">
                 <span className="text-xl md:text-2xl font-bold text-supermock-text-secondary align-top mt-2">
                   BDT{" "}
                 </span>
                 <span className="text-4xl md:text-5xl font-bold text-supermock-text tracking-tighter">
-                  36,000
+                  {currentPlan.price}
                 </span>
                 <span className="text-sm md:text-md font-medium text-supermock-text-secondary self-end mb-2">
-                  /year
+                  {currentPlan.period}
                 </span>
               </div>
 
@@ -48,7 +116,7 @@ export default function Pricing() {
                 <span className="text-xs md:text-sm text-supermock-text-secondary truncate">
                   Equivalent to just{" "}
                   <span className="font-bold text-gray-800">
-                    3,000 BDT/month
+                    {currentPlan.monthlyEquivalent} BDT/month
                   </span>
                 </span>
               </div>
@@ -97,9 +165,6 @@ export default function Pricing() {
               No hidden fees. 30-day money-back guarantee.
             </p>
           </div>
-
-          {/* Cloud Storage Component */}
-          <Cloud />
         </div>
       </div>
     </section>
