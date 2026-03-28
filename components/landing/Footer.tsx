@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import {
+  Facebook,
+  InstagramIcon,
+  Mail,
+  Phone,
+  YoutubeIcon,
+} from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -27,7 +33,7 @@ export default function Footer() {
               Mock test platform for IELTS training centres.
             </p>
 
-            <div className="sm:justify-start text-supermock-text-secondary/60 mt-2">
+            <div className="flex gap-3 sm:justify-start text-supermock-text-secondary/60 mt-2">
               <Link
                 href="https://www.facebook.com/Supermock.fb"
                 target="_blank"
@@ -35,6 +41,26 @@ export default function Footer() {
                 className="hover:text-supermock-red transition-colors"
               >
                 <Facebook className="w-6 h-6" />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/ielts.supermock/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-supermock-red transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supermock-red rounded-md"
+                aria-label="Visit our Instagram profile"
+              >
+                <InstagramIcon className="w-6 h-6" />
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/@supermockofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-supermock-red transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supermock-red rounded-md"
+                aria-label="Visit our YouTube channel"
+              >
+                <YoutubeIcon className="w-6 h-6" />
               </Link>
             </div>
           </div>

@@ -310,7 +310,7 @@ export default function RegistrationForm() {
                 </>
               ) : (
                 <>
-                  <span>Join Waitlist</span>
+                  <span>Register For SuperMock</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
