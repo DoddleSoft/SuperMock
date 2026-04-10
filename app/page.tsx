@@ -6,12 +6,14 @@ import Pricing from "@/components/landing/Pricing";
 import Guarantee from "@/components/landing/Guarantee";
 import FinalCTA from "@/components/landing/FinalCTA";
 import Footer from "@/components/landing/Footer";
+import PromoVideo from "@/components/landing/Promo";
 
 export default function Home() {
   return (
     <main className="min-h-screen max-w-full">
       <Navbar />
       <Hero />
+      <PromoVideo />
       <WhyChoose />
       <WhatsIncluded />
       <Pricing />
