@@ -38,8 +38,15 @@ export async function GET() {
     { url: data.signedUrl },
     {
       headers: {
-        "CDN-Cache-Control": "public, max-age=3000, stale-while-revalidate=600",
-        "Cache-Control": "public, max-age=3000, stale-while-revalidate=600",
+        // Browser: cache 60s so repeat visits in the same tab don't re-fetch,
+        // but revalidate quickly so a fresh token is always nearby.
+        // Vercel Edge (s-maxage): cache 1800s (30 min), revalidate in background.
+        // Total worst-case age ≈ 1800 + 600 = 2400s — safely under the 7200s token expiry.
+        "Cache-Control":
+          "public, max-age=60, s-maxage=1800, stale-while-revalidate=600",
+        // Cloudflare: respect the same budget as Vercel Edge.
+        "CDN-Cache-Control":
+          "public, max-age=1800, stale-while-revalidate=600",
       },
     },
   );
