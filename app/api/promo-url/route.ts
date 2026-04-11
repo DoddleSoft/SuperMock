@@ -6,9 +6,9 @@ const FILE_PATH =
   "promo/Introducing SuperMock -- IELTS Mock Test Platform..mp4";
 const SIGNED_URL_EXPIRY = 7200; // 2 hours
 
-// Revalidate every 50 min — Vercel CDN caches the response at the edge.
-// Most requests never hit the serverless function at all.
-export const revalidate = 3000;
+// Force dynamic — never pre-render at build time.
+// CDN caching is handled via Cache-Control headers below.
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
