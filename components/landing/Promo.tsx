@@ -16,11 +16,6 @@ export default function PromoVideo() {
       .catch(() => setError(true));
   }, []);
 
-  const handleVideoError = () => {
-    setError(true);
-    setVideoUrl(null);
-  };
-
   return (
     <section className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto px-4 pb-12">
       {/* Typography */}
@@ -42,12 +37,11 @@ export default function PromoVideo() {
           key={videoUrl}
           src={videoUrl}
           disablePictureInPicture={false}
-          className="rounded-lg w-full max-w-3xl max-h-[75h] object-contain"
+          className="rounded-lg w-full max-w-3xl max-h-[75vh] object-contain"
           controls
           controlsList="nodownload"
           playsInline
           preload="metadata"
-          onError={handleVideoError}
         />
       )}
     </section>
